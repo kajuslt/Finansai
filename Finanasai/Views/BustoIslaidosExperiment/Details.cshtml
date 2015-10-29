@@ -1,0 +1,130 @@
+﻿@model Finansai.DAL.BustoIslaidos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BustoIslaidos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Metai.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Metai.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MenuoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SavaiteId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SavaiteId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DienaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienaId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paskola)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paskola)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MalgozatosTelefonas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MalgozatosTelefonas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JuliausTelefonas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JuliausTelefonas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Elektra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Elektra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vanduo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vanduo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Šildymas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Šildymas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TvIrInterntetas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TvIrInterntetas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BendriMokesciai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BendriMokesciai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kita)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kita)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -168,6 +168,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AsmeninePrieziuraController.cs" />
     <Compile Include="Controllers\BustoIslaidosController.cs" />
+    <Compile Include="Controllers\BustoIslaidosExperimentController.cs" />
     <Compile Include="Controllers\DienosController.cs" />
     <Compile Include="Controllers\DovanosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1141,6 +1142,12 @@
     <Content Include="Views\BustoIslaidos\BulkCreate.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\MetaiEditor.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\MetaiEditorOne.cshtml" />
+    <Content Include="Views\BustoIslaidosExperiment\BulkCreate.cshtml" />
+    <Content Include="Views\BustoIslaidosExperiment\Create.cshtml" />
+    <Content Include="Views\BustoIslaidosExperiment\Delete.cshtml" />
+    <Content Include="Views\BustoIslaidosExperiment\Details.cshtml" />
+    <Content Include="Views\BustoIslaidosExperiment\Edit.cshtml" />
+    <Content Include="Views\BustoIslaidosExperiment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

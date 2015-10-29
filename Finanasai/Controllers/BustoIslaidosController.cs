@@ -1,95 +1,175 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 using AutoMapper;
 using Finanasai.Helpers;
-using Finanasai.Services;
+using Finanasai.Models;
 using Finanasai.ViewModel;
 using Finansai.DAL;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
-using System.Data.Entity;
 
 namespace Finanasai.Controllers
 {
-    public partial class BustoIslaidosController : BaseController
+    public class BustoIslaidosController : BaseController
     {
-        private BustoIslaidosService bustoIslaidosService;
-
-        public BustoIslaidosController()
-        {
-
-            bustoIslaidosService = new BustoIslaidosService(new FinansaiEntities());
-        }
 
         // GET: BustoIslaidos
         public ActionResult Index()
         {
-            var maistas = _db.Maistas.Include(m => m.Metai).Include(m => m.Menesiai).Include(m => m.Savaites).Include(m => m.Dienos);
-            //ViewBag.MetaiId = new SelectList(_db.Metai, "Id", "Pavadinimas");
-            //ViewBag.MenuoId = new SelectList(_db.Menesiai, "Id", "Pavadinimas");
-            //ViewBag.SavaiteId = new SelectList(_db.Savaites, "Id", "Pavadinimas");
-            //ViewBag.DienaId = new SelectList(_db.Dienos, "Id", "Pavadinimas");
+            var bustoIslaidos =
+                _db.BustoIslaidos.Include(b => b.Metai)
+                    .Include(m => m.Menesiai)
+                    .Include(m => m.Savaites)
+                    .Include(m => m.Dienos);
             return View();
         }
 
-        public ActionResult Index_Read([DataSourceRequest] DataSourceRequest request)
+        // GET: BustoIslaidos/Details/5
+        public ActionResult Details(int? id)
         {
-
-            return Json(bustoIslaidosService.Read().ToDataSourceResult(request));
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            BustoIslaidos bustoIslaidos = _db.BustoIslaidos.Find(id);
+            if (bustoIslaidos == null)
+            {
+                return HttpNotFound();
+            }
+            return View(bustoIslaidos);
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create([DataSourceRequest] DataSourceRequest request, BustoIslaidosViewModel product)
+        // GET: BustoIslaidos/Create
+        public ActionResult Create()
         {
-            if (product != null && ModelState.IsValid)
+            ViewBag.MetaiId = new SelectList(_db.Metai, "Id", "Pavadinimas");
+            ViewBag.MenuoId = new SelectList(_db.Menesiai, "Id", "Pavadinimas");
+            ViewBag.SavaiteId = new SelectList(_db.Savaites, "Id", "Pavadinimas");
+            ViewBag.DienaId = new SelectList(_db.Dienos, "Id", "Pavadinimas");
+            return View();
+        }
+
+        // POST: BustoIslaidos/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(
+            [Bind(
+                Include =
+                    "Id,MetaiId,MenuoId,SavaiteId,DienaId,Data,Paskola,MalgozatosTelefonas,JuliausTelefonas,Elektra,Vanduo,Šildymas,TvIrInterntetas,BendriMokesciai,Kita"
+                )] BustoIslaidos bustoIslaidos)
+        {
+            if (ModelState.IsValid)
             {
-                bustoIslaidosService.Create(product);
+                _db.BustoIslaidos.Add(bustoIslaidos);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
-            return Json(new[] { product }.ToDataSourceResult(request, ModelState));
+            ViewBag.MetaiId = new SelectList(_db.Metai, "Id", "Id", bustoIslaidos.MetaiId);
+            return View(bustoIslaidos);
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Update([DataSourceRequest] DataSourceRequest request, BustoIslaidosViewModel product)
+        // GET: BustoIslaidos/Edit/5
+        public ActionResult Edit(int? id)
         {
-            if (product != null && ModelState.IsValid)
+            if (id == null)
             {
-                bustoIslaidosService.Update(product);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            return Json(new[] { product }.ToDataSourceResult(request, ModelState));
-        }
-
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Destroy([DataSourceRequest] DataSourceRequest request, BustoIslaidosViewModel product)
-        {
-            if (product != null)
+            BustoIslaidos bustoIslaidos = _db.BustoIslaidos.Find(id);
+            if (bustoIslaidos == null)
             {
-                bustoIslaidosService.Destroy(product);
+                return HttpNotFound();
             }
-
-            return Json(new[] { product }.ToDataSourceResult(request, ModelState));
+            ViewBag.MetaiId = new SelectList(_db.Metai, "Id", "Id", bustoIslaidos.MetaiId);
+            return View(bustoIslaidos);
         }
 
-        public void PopulateMetai([DataSourceRequest] DataSourceRequest request)
+        // POST: BustoIslaidos/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(
+            [Bind(
+                Include =
+                    "Id,MetaiId,MenuoId,SavaiteId,DienaId,Data,Paskola,MalgozatosTelefonas,JuliausTelefonas,Elektra,Vanduo,Šildymas,TvIrInterntetas,BendriMokesciai,Kita"
+                )] BustoIslaidos bustoIslaidos)
         {
-            
-
-            var dataContext = new FinansaiEntities();
-            var metai = dataContext.Dovanos.ToList();
-            DataSourceResult result = metai.ToDataSourceResult(request);
-            result.Data = Mapper.Map<IEnumerable<DovanosViewModel>>(result.Data);
-
-            ViewData["metai"] = result;
+            if (ModelState.IsValid)
+            {
+                _db.Entry(bustoIslaidos).State = EntityState.Modified;
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.MetaiId = new SelectList(_db.Metai, "Id", "Id", bustoIslaidos.MetaiId);
+            return View(bustoIslaidos);
         }
 
-       public ActionResult GetBustoIslaidos([DataSourceRequest] DataSourceRequest request)
+        // GET: BustoIslaidos/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            BustoIslaidos bustoIslaidos = _db.BustoIslaidos.Find(id);
+            if (bustoIslaidos == null)
+            {
+                return HttpNotFound();
+            }
+            return View(bustoIslaidos);
+        }
+
+        // POST: BustoIslaidos/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            BustoIslaidos bustoIslaidos = _db.BustoIslaidos.Find(id);
+            _db.BustoIslaidos.Remove(bustoIslaidos);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        [HttpPost]
+        public ActionResult GetBustoIslaidos([DataSourceRequest] DataSourceRequest request)
         {
             var bustoIslaidos = _db.BustoIslaidos.ToList();
             DataSourceResult result = bustoIslaidos.ToDataSourceResult(request);
             result.Data = Mapper.Map<IEnumerable<BustoIslaidosViewModel>>(result.Data);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult GetBustoIslaidosSavaitines([DataSourceRequest] DataSourceRequest request)
+        {
+            var bustoIslaidosSavaitine = _db.BustoIslaidos_Savaitine.ToList();
+            DataSourceResult result = bustoIslaidosSavaitine.ToDataSourceResult(request);
+            result.Data = Mapper.Map<IEnumerable<BustoIslaidosSavaitinesViewModel>>(result.Data);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult BulkCreate()
+        {
+
+            return View();
+
+        }
+
     }
 }

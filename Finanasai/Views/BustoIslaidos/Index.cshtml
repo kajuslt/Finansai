@@ -14,15 +14,15 @@
           .Name("bustoIslaidosGrid")
           .ToolBar(toolBar =>
           {
-              toolBar.Custom().Name("Create").Text("Pridėti naują įrašą");
-              
+              toolBar.Custom().Name("Create").Text("Pridėti naują įrašą").Url(Url.Action("Create", "BustoIslaidos"));
+              toolBar.Custom().Name("Create").Text("Pridėti naują savaitę").Url(Url.Action("BulkCreate", "BustoIslaidos"));
           })
           .Columns(columns =>
           {
-              columns.Bound(f => f.Metai);
-              columns.Bound(f => f.Menesiai).Width(80);
-              columns.Bound(f => f.Savaites).Width(90);
-              columns.Bound(f => f.Dienos);
+              columns.Bound(f => f.Metai.Pavadinimas);
+              columns.Bound(f => f.Menesiai.Pavadinimas).Width(80);
+              columns.Bound(f => f.Savaites.Pavadinimas).Width(90);
+              columns.Bound(f => f.Dienos.Pavadinimas);
               columns.Bound(f => f.Data).Width(100);
               columns.Bound(f => f.Paskola);
               columns.Bound(f => f.MalgozatosTelefonas).HeaderHtmlAttributes(new { style = "white-space: normal" });
@@ -33,43 +33,65 @@
               columns.Bound(f => f.TvIrInterntetas).HeaderHtmlAttributes(new { style = "white-space: normal" });
               columns.Bound(f => f.BendriMokesciai).HeaderHtmlAttributes(new { style = "white-space: normal" });
               columns.Bound(f => f.Kita);
-              columns.Command(command => { command.Edit(); command.Destroy(); }).Width(172);
-
+              columns.Bound(a => a.Id).Title("").Filterable(false).Sortable(false).ClientTemplate(
+                  "<a href='" +
+                  Url.Action("Edit", "BustoIslaidos") +
+                  "/#= Id #'" +
+                  ">Redaguoti</a>"
+                  ).HtmlAttributes(new { title = "Redaguoti" });
+              columns.Bound(a => a.Id).Title("").Filterable(false).Sortable(false).ClientTemplate(
+                  "<a class=\"deleteBtn\" href='" +
+                  Url.Action("Delete", "BustoIslaidos") +
+                  "/#= Id #'" +
+                  "onClick=\"return onClickDeleteButton(this)\">Šalinti</a>"
+                  ).HtmlAttributes(new { title = "Šalinti" });
           })
-          .ToolBar(toolbar => toolbar.Create())
-          .Editable(editable => editable.Mode(GridEditMode.InLine))
-          .Pageable()
-          .Sortable()
-          .Scrollable()
-          .HtmlAttributes(new { style = "height:430px;" })
           .DataSource(dataSource => dataSource
               .Ajax()
               .Read(read => read
-                          .Action("GetBustoIslaidos", "BustoIslaidos"))
+                  .Action("GetBustoIslaidos", "BustoIslaidos"))
               .PageSize(8)
-              .Events(events => events.Error("error_handler"))
-              .Model(model => model.Id(p => p.Id))
-                      .Create(update => update.Action("Create", "BustoIslaidos"))
-              
-                      .Update(update => update.Action("Update", "BustoIslaidos"))
-                      .Destroy(update => update.Action("Destroy", "BustoIslaidos"))
-              )
-    )
+
+          )
+
+          .Pageable()
+          .Sortable())
 </div>
 @section Scripts {
-   <script type="text/javascript">
-       function error_handler(e) {
-           if (e.errors) {
-               var message = "Errors:\n";
-               $.each(e.errors, function (key, value) {
-                   if ('errors' in value) {
-                       $.each(value.errors, function () {
-                           message += this + "\n";
-                       });
-                   }
-               });
-               alert(message);
-           }
-       }
-</script>
+    <script type="text/javascript">
+        var deleteLinkObj;
+
+        function onClickDeleteButton(e) {
+
+            deleteLinkObj = $(e); //for future use
+            $("#delete-dialog").dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                modal: true,
+                dialogClass: "no-close", //Dialog options
+                buttons: {
+                    "Šalinti": function () {
+                        $.post(deleteLinkObj[0].href, function (data) { //Post to action
+                            if (data == 'Success') {
+                                deleteLinkObj.closest("tr").hide('fast'); //Hide Row
+                                $("#bustoIslaidosGrid").data("kendoGrid").dataSource.read();
+                                $("#bustoIslaidosGrid").data("kendoGrid").refresh();
+                                //(optional) Display Confirmation
+                            } else {
+                                $('<div title="Klaida" />').html(data).dialog({ modal: true, buttons: { "Uždaryti": function () { $(this).dialog("close"); } } });
+                            }
+                        });
+                        $(this).dialog("close");
+                    },
+                    "Atšaukti": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            }).dialog("open");
+
+            return false; // prevents the default behaviour
+
+        };
+    </script>
 }

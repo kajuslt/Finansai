@@ -1,0 +1,80 @@
+﻿@using Finanasai.ViewModel
+@using Kendo.Mvc.UI
+@model List<Finansai.DAL.BustoIslaidos>
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Bulk Create</h2>
+
+
+<div id="bustoIslaidosGridas" class="k-content">
+
+    @(Html.Kendo().Grid<BustoIslaidosViewModel>()
+          .Name("bustoIslaidosSavaiyinesGrid")
+          .Columns(columns =>
+          {
+              columns.Bound(f => f.Metai);
+              columns.Bound(f => f.Menesiai).Width(80);
+              columns.Bound(f => f.Savaites).Width(90);
+              columns.Bound(f => f.Dienos);
+              columns.Bound(f => f.Data).Width(100);
+              columns.Bound(f => f.Paskola);
+              columns.Bound(f => f.MalgozatosTelefonas).HeaderHtmlAttributes(new { style = "white-space: normal" });
+              columns.Bound(f => f.JuliausTelefonas).HeaderHtmlAttributes(new { style = "white-space: normal" });
+              columns.Bound(f => f.Elektra);
+              columns.Bound(f => f.Vanduo).HeaderHtmlAttributes(new { style = "white-space: normal" });
+              columns.Bound(f => f.Šildymas).HeaderHtmlAttributes(new { style = "white-space: normal" });
+              columns.Bound(f => f.TvIrInterntetas).HeaderHtmlAttributes(new { style = "white-space: normal" });
+              columns.Bound(f => f.BendriMokesciai).HeaderHtmlAttributes(new { style = "white-space: normal" });
+              columns.Bound(f => f.Kita);
+              columns.Command(command => { command.Edit(); command.Destroy(); }).Width(172);
+          })
+          .ToolBar(toolbar => toolbar.Create())
+          .Editable(editable => editable.Mode(GridEditMode.InLine))
+                .Pageable()
+                .Sortable()
+                .Scrollable()
+                .HtmlAttributes(new { style = "height:430px;" })
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .PageSize(8)
+              .Events(events => events.Error("error_handler"))
+                      .Model(model => model.Id(p => p.Id))
+                    .Create(update => update.Action("EditingInline_Create", "Grid"))
+              .Read(read => read
+                .Action("GetBustoIslaidosSavaitines", "BustoIslaidos"))
+                        .Update(update => update.Action("EditingInline_Update", "Grid"))
+                    .Destroy(update => update.Action("EditingInline_Destroy", "Grid"))
+              
+                      
+
+          )
+
+          .Pageable()
+          .Sortable())
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script type="text/javascript">
+        function error_handler(e) {
+            if (e.errors) {
+                var message = "Errors:\n";
+                $.each(e.errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+                alert(message);
+            }
+        }
+</script>
+}
