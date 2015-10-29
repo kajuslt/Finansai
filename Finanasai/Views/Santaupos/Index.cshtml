@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Finansai.DAL.Santaupos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Grynais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MKorteleDnB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JKorteleDanske)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JKortelėSwedBank)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JKortelėDnB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Automobiliui)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kelionei)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ForceMajor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sveikata)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rubai)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Grynais)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MKorteleDnB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JKorteleDanske)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JKortelėSwedBank)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JKortelėDnB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Automobiliui)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kelionei)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForceMajor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sveikata)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rubai)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

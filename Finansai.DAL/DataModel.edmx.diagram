@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="02b34e3c886943fa94c8aaf11cd958b9" Name="Diagram1">
+        <EntityTypeShape EntityType="FinansaiModel.AsmeninePrieziura" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinansaiModel.BustoIslaidos" Width="1.5" PointX="6" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinansaiModel.Dienos" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinansaiModel.Dovanos" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinansaiModel.Kita" Width="1.5" PointX="3" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinansaiModel.Maistas" Width="1.5" PointX="6" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinansaiModel.Menesiai" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinansaiModel.Metai" Width="1.5" PointX="0.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinansaiModel.Pramogos" Width="1.5" PointX="6" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinansaiModel.Savaites" Width="1.5" PointX="0.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinansaiModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinansaiModel.Transportas" Width="1.5" PointX="9" PointY="15" IsExpanded="true" />
+        <AssociationConnector Association="FinansaiModel.fk_DienosAsmeninePrieziura" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_MenesiaiAsmeninePrieziura" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_MetaiAsmeninePrieziura" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_SavaitesAsmeninePrieziura" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_DienosBustoIslaidos" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_MenesiaiBustoIslaidos" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_MetaiBustoIslaidos" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_SavaitesBustoIslaidos" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_DienosDovanos" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_DienosKita" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_DienosMaistas" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_DienosPramogos" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_DienosTransportas" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_MenesiaiDovanos" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_MetaiDovanos" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_SavaitesDovanos" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_MenesiaiKita" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_MetaiKita" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_SavaitesKita" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_MenesiaiMaistas" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_MetaiMaistas" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_SavaitesMaistas" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_MenesiaiPramogos" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_MenesiaiTransportas" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_MetaiPramogos" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_MetaiTransportas" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_SavaitesPramogos" ManuallyRouted="false" />
+        <AssociationConnector Association="FinansaiModel.fk_SavaitesTransportas" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FinansaiModel.Santaupos" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="FinansaiModel.BustoIslaidos_Savaitine" Width="1.5" PointX="9" PointY="9.375" />
+        <AssociationConnector Association="FinansaiModel.fk_DienosBustoIslaidos_Savaitine" />
+        <AssociationConnector Association="FinansaiModel.fk_MenesiaiBustoIslaidos_Savaitine" />
+        <AssociationConnector Association="FinansaiModel.fk_MetaiBustoIslaidos_Savaitine" />
+        <AssociationConnector Association="FinansaiModel.fk_SavaitesBustoIslaidos_Savaitine" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

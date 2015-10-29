@@ -1,0 +1,9 @@
+D:\Programming\Finansai\FinanasaiSolution\Finansai.DAL\bin\Debug\Finansai.DAL.dll.config
+D:\Programming\Finansai\FinanasaiSolution\Finansai.DAL\bin\Debug\Finansai.DAL.dll
+D:\Programming\Finansai\FinanasaiSolution\Finansai.DAL\bin\Debug\Finansai.DAL.pdb
+D:\Programming\Finansai\FinanasaiSolution\Finansai.DAL\bin\Debug\EntityFramework.dll
+D:\Programming\Finansai\FinanasaiSolution\Finansai.DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Programming\Finansai\FinanasaiSolution\Finansai.DAL\bin\Debug\EntityFramework.xml
+D:\Programming\Finansai\FinanasaiSolution\Finansai.DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Programming\Finansai\FinanasaiSolution\Finansai.DAL\obj\Debug\Finansai.DAL.dll
+D:\Programming\Finansai\FinanasaiSolution\Finansai.DAL\obj\Debug\Finansai.DAL.pdb

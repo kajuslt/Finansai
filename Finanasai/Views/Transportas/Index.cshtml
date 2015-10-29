@@ -1,0 +1,42 @@
+﻿
+@using Finanasai.ViewModel
+@using Kendo.Mvc.UI
+@model IEnumerable<TransportasViewModel>
+
+@{
+    ViewBag.Title = "Transportas";
+}
+
+<h2>Transportas</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div id="transportasGridas" class="k-content">
+    <div class="gridtitle">Transportas</div>
+    @(Html.Kendo().Grid<TransportasViewModel>()
+          .Name("transportasGrid")
+          .Columns(columns =>
+          {
+              columns.Bound(f => f.Metai);
+              columns.Bound(f => f.Menesiai).Width(80);
+              columns.Bound(f => f.Savaites).Width(90);
+              columns.Bound(f => f.Dienos);
+              columns.Bound(f => f.Data).Width(100);
+              columns.Bound(f => f.MašinosPrieziura);
+              columns.Bound(f => f.AutobusoTaksiIslaidos);
+              columns.Bound(f => f.Draudimas);
+              columns.Bound(f => f.Plovimas);
+              columns.Bound(f => f.Kita);
+          })
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Read(read => read
+                          .Action("GetTransportas", "Transportas"))
+              .PageSize(8)
+
+          )
+
+          .Pageable()
+          .Sortable())
+</div>

@@ -1,0 +1,39 @@
+﻿@using Finanasai.ViewModel
+@using Kendo.Mvc.UI
+@model IEnumerable<Finanasai.ViewModel.DovanosViewModel>
+
+@{
+    ViewBag.Title = "Dovanos";
+}
+
+<h2>Dovanos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div id="dovanosGridas" class="k-content">
+    <div class="gridtitle">Pramogos</div>
+    @(Html.Kendo().Grid<DovanosViewModel>()
+          .Name("dovanosGrid")
+          .Columns(columns =>
+          {
+              columns.Bound(f => f.Metai);
+              columns.Bound(f => f.Menesiai).Width(80);
+              columns.Bound(f => f.Savaites).Width(90);
+              columns.Bound(f => f.Dienos);
+              columns.Bound(f => f.Data).Width(100);
+              columns.Bound(f => f.Gimtadieniai);
+              columns.Bound(f => f.Sventės);;
+              columns.Bound(f => f.Kita);
+          })
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Read(read => read
+                                  .Action("GetDovanos", "Dovanos"))
+              .PageSize(8)
+
+          )
+
+          .Pageable()
+          .Sortable())
+</div>

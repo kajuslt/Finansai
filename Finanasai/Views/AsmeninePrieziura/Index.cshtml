@@ -1,0 +1,43 @@
+﻿@using Finanasai.ViewModel
+@using Kendo.Mvc.UI
+@model IEnumerable<AsmeninePrieziuraViewModel>
+
+@{
+    ViewBag.Title = "Asmeninė priežiūra";
+}
+
+<h2>Asmeninė priežiūra</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div id="asmeninePrieziuraGridas" class="k-content">
+    <div class="gridtitle">Transportas</div>
+    @(Html.Kendo().Grid<AsmeninePrieziuraViewModel>()
+          .Name("asmeninePrieziuraGrid")
+          .Columns(columns =>
+          {
+              columns.Bound(f => f.Metai);
+              columns.Bound(f => f.Menesiai).Width(80);
+              columns.Bound(f => f.Savaites).Width(90);
+              columns.Bound(f => f.Dienos);
+              columns.Bound(f => f.Data).Width(100);
+              columns.Bound(f => f.Medicina);
+              columns.Bound(f => f.PlaukaiNagai);
+              columns.Bound(f => f.Rubai);
+              columns.Bound(f => f.RubuValymas);
+              columns.Bound(f => f.SveikatingumoKlubas);
+              columns.Bound(f => f.Bureliai);
+              columns.Bound(f => f.HigienoPrekes);
+              columns.Bound(f => f.Kita);
+          })
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Read(read => read
+                  .Action("GetAsmeninePrieziura", "AsmeninePrieziura"))
+              .PageSize(8)
+          )
+
+          .Pageable()
+          .Sortable())
+</div>

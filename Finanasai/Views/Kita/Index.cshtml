@@ -1,0 +1,40 @@
+﻿@using Finanasai.ViewModel
+@using Kendo.Mvc.UI
+@model IEnumerable<KitaViewModel>
+
+@{
+    ViewBag.Title = "Kita";
+}
+
+<h2>Kita</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div id="kitaGridas" class="k-content">
+    <div class="gridtitle">Pramogos</div>
+    @(Html.Kendo().Grid<KitaViewModel>()
+          .Name("kitaGrid")
+          .Columns(columns =>
+          {
+              columns.Bound(f => f.Metai);
+              columns.Bound(f => f.Menesiai).Width(80);
+              columns.Bound(f => f.Savaites).Width(90);
+              columns.Bound(f => f.Dienos);
+              columns.Bound(f => f.Data).Width(100);
+              columns.Bound(f => f.NenumatytiAtvejai);
+              columns.Bound(f => f.BuitieneTechnika);
+              columns.Bound(f => f.Cigaretes);
+              columns.Bound(f => f.Kita1);
+          })
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Read(read => read
+                          .Action("GetKita", "Kita"))
+              .PageSize(8)
+
+          )
+
+          .Pageable()
+          .Sortable())
+</div>

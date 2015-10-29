@@ -1,0 +1,786 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FinansaiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AsmeninePrieziura">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="MetaiId" Type="Int32" Nullable="false" />
+    <Property Name="MenuoId" Type="Int32" Nullable="false" />
+    <Property Name="SavaiteId" Type="Int32" Nullable="false" />
+    <Property Name="DienaId" Type="Int32" Nullable="false" />
+    <Property Name="Data" Type="DateTime" Precision="3" />
+    <Property Name="Medicina" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PlaukaiNagai" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Rubai" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="RubuValymas" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SveikatingumoKlubas" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Bureliai" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="HigienoPrekes" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Kita" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Dienos" Relationship="Self.fk_DienosAsmeninePrieziura" FromRole="AsmeninePrieziura" ToRole="Dienos" />
+    <NavigationProperty Name="Menesiai" Relationship="Self.fk_MenesiaiAsmeninePrieziura" FromRole="AsmeninePrieziura" ToRole="Menesiai" />
+    <NavigationProperty Name="Metai" Relationship="Self.fk_MetaiAsmeninePrieziura" FromRole="AsmeninePrieziura" ToRole="Metai" />
+    <NavigationProperty Name="Savaites" Relationship="Self.fk_SavaitesAsmeninePrieziura" FromRole="AsmeninePrieziura" ToRole="Savaites" />
+  </EntityType>
+  <EntityType Name="BustoIslaidos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MetaiId" Type="Int32" Nullable="false" />
+    <Property Name="MenuoId" Type="Int32" Nullable="false" />
+    <Property Name="SavaiteId" Type="Int32" Nullable="false" />
+    <Property Name="DienaId" Type="Int32" Nullable="false" />
+    <Property Name="Data" Type="DateTime" Precision="3" />
+    <Property Name="Paskola" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MalgozatosTelefonas" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="JuliausTelefonas" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Elektra" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Vanduo" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Šildymas" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="TvIrInterntetas" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="BendriMokesciai" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Kita" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Dienos" Relationship="Self.fk_DienosBustoIslaidos" FromRole="BustoIslaidos" ToRole="Dienos" />
+    <NavigationProperty Name="Menesiai" Relationship="Self.fk_MenesiaiBustoIslaidos" FromRole="BustoIslaidos" ToRole="Menesiai" />
+    <NavigationProperty Name="Metai" Relationship="Self.fk_MetaiBustoIslaidos" FromRole="BustoIslaidos" ToRole="Metai" />
+    <NavigationProperty Name="Savaites" Relationship="Self.fk_SavaitesBustoIslaidos" FromRole="BustoIslaidos" ToRole="Savaites" />
+  </EntityType>
+  <EntityType Name="Dienos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pavadinimas" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AsmeninePrieziura" Relationship="Self.fk_DienosAsmeninePrieziura" FromRole="Dienos" ToRole="AsmeninePrieziura" />
+    <NavigationProperty Name="BustoIslaidos" Relationship="Self.fk_DienosBustoIslaidos" FromRole="Dienos" ToRole="BustoIslaidos" />
+    <NavigationProperty Name="Dovanos" Relationship="Self.fk_DienosDovanos" FromRole="Dienos" ToRole="Dovanos" />
+    <NavigationProperty Name="Kita" Relationship="Self.fk_DienosKita" FromRole="Dienos" ToRole="Kita" />
+    <NavigationProperty Name="Maistas" Relationship="Self.fk_DienosMaistas" FromRole="Dienos" ToRole="Maistas" />
+    <NavigationProperty Name="Pramogos" Relationship="Self.fk_DienosPramogos" FromRole="Dienos" ToRole="Pramogos" />
+    <NavigationProperty Name="Transportas" Relationship="Self.fk_DienosTransportas" FromRole="Dienos" ToRole="Transportas" />
+    <NavigationProperty Name="BustoIslaidos_Savaitine" Relationship="FinansaiModel.fk_DienosBustoIslaidos_Savaitine" FromRole="Dienos" ToRole="BustoIslaidos_Savaitine" />
+  </EntityType>
+  <EntityType Name="Dovanos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MetaiId" Type="Int32" Nullable="false" />
+    <Property Name="MenuoId" Type="Int32" Nullable="false" />
+    <Property Name="SavaiteId" Type="Int32" Nullable="false" />
+    <Property Name="DienaId" Type="Int32" Nullable="false" />
+    <Property Name="Data" Type="DateTime" Precision="3" />
+    <Property Name="Gimtadieniai" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Sventės" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Kita" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Dienos" Relationship="Self.fk_DienosDovanos" FromRole="Dovanos" ToRole="Dienos" />
+    <NavigationProperty Name="Menesiai" Relationship="Self.fk_MenesiaiDovanos" FromRole="Dovanos" ToRole="Menesiai" />
+    <NavigationProperty Name="Metai" Relationship="Self.fk_MetaiDovanos" FromRole="Dovanos" ToRole="Metai" />
+    <NavigationProperty Name="Savaites" Relationship="Self.fk_SavaitesDovanos" FromRole="Dovanos" ToRole="Savaites" />
+  </EntityType>
+  <EntityType Name="Kita">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MetaiId" Type="Int32" Nullable="false" />
+    <Property Name="MenuoId" Type="Int32" Nullable="false" />
+    <Property Name="SavaiteId" Type="Int32" Nullable="false" />
+    <Property Name="DienaId" Type="Int32" Nullable="false" />
+    <Property Name="Data" Type="DateTime" Precision="3" />
+    <Property Name="NenumatytiAtvejai" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="BuitieneTechnika" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Cigaretes" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Kita1" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Dienos" Relationship="Self.fk_DienosKita" FromRole="Kita" ToRole="Dienos" />
+    <NavigationProperty Name="Menesiai" Relationship="Self.fk_MenesiaiKita" FromRole="Kita" ToRole="Menesiai" />
+    <NavigationProperty Name="Metai" Relationship="Self.fk_MetaiKita" FromRole="Kita" ToRole="Metai" />
+    <NavigationProperty Name="Savaites" Relationship="Self.fk_SavaitesKita" FromRole="Kita" ToRole="Savaites" />
+  </EntityType>
+  <EntityType Name="Maistas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MetaiId" Type="Int32" Nullable="false" />
+    <Property Name="MenuoId" Type="Int32" Nullable="false" />
+    <Property Name="SavaiteId" Type="Int32" Nullable="false" />
+    <Property Name="DienaId" Type="Int32" Nullable="false" />
+    <Property Name="Data" Type="DateTime" Precision="3" />
+    <Property Name="Pirkiniai" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="RestoranaiKavinesUzkandines" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="MaistasDarbe" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Kita" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Dienos" Relationship="Self.fk_DienosMaistas" FromRole="Maistas" ToRole="Dienos" />
+    <NavigationProperty Name="Menesiai" Relationship="Self.fk_MenesiaiMaistas" FromRole="Maistas" ToRole="Menesiai" />
+    <NavigationProperty Name="Metai" Relationship="Self.fk_MetaiMaistas" FromRole="Maistas" ToRole="Metai" />
+    <NavigationProperty Name="Savaites" Relationship="Self.fk_SavaitesMaistas" FromRole="Maistas" ToRole="Savaites" />
+  </EntityType>
+  <EntityType Name="Menesiai">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pavadinimas" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AsmeninePrieziura" Relationship="Self.fk_MenesiaiAsmeninePrieziura" FromRole="Menesiai" ToRole="AsmeninePrieziura" />
+    <NavigationProperty Name="BustoIslaidos" Relationship="Self.fk_MenesiaiBustoIslaidos" FromRole="Menesiai" ToRole="BustoIslaidos" />
+    <NavigationProperty Name="Dovanos" Relationship="Self.fk_MenesiaiDovanos" FromRole="Menesiai" ToRole="Dovanos" />
+    <NavigationProperty Name="Kita" Relationship="Self.fk_MenesiaiKita" FromRole="Menesiai" ToRole="Kita" />
+    <NavigationProperty Name="Maistas" Relationship="Self.fk_MenesiaiMaistas" FromRole="Menesiai" ToRole="Maistas" />
+    <NavigationProperty Name="Pramogos" Relationship="Self.fk_MenesiaiPramogos" FromRole="Menesiai" ToRole="Pramogos" />
+    <NavigationProperty Name="Transportas" Relationship="Self.fk_MenesiaiTransportas" FromRole="Menesiai" ToRole="Transportas" />
+    <NavigationProperty Name="BustoIslaidos_Savaitine" Relationship="FinansaiModel.fk_MenesiaiBustoIslaidos_Savaitine" FromRole="Menesiai" ToRole="BustoIslaidos_Savaitine" />
+  </EntityType>
+  <EntityType Name="Metai">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pavadinimas" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AsmeninePrieziura" Relationship="Self.fk_MetaiAsmeninePrieziura" FromRole="Metai" ToRole="AsmeninePrieziura" />
+    <NavigationProperty Name="BustoIslaidos" Relationship="Self.fk_MetaiBustoIslaidos" FromRole="Metai" ToRole="BustoIslaidos" />
+    <NavigationProperty Name="Dovanos" Relationship="Self.fk_MetaiDovanos" FromRole="Metai" ToRole="Dovanos" />
+    <NavigationProperty Name="Kita" Relationship="Self.fk_MetaiKita" FromRole="Metai" ToRole="Kita" />
+    <NavigationProperty Name="Maistas" Relationship="Self.fk_MetaiMaistas" FromRole="Metai" ToRole="Maistas" />
+    <NavigationProperty Name="Pramogos" Relationship="Self.fk_MetaiPramogos" FromRole="Metai" ToRole="Pramogos" />
+    <NavigationProperty Name="Transportas" Relationship="Self.fk_MetaiTransportas" FromRole="Metai" ToRole="Transportas" />
+    <NavigationProperty Name="BustoIslaidos_Savaitine" Relationship="FinansaiModel.fk_MetaiBustoIslaidos_Savaitine" FromRole="Metai" ToRole="BustoIslaidos_Savaitine" />
+  </EntityType>
+  <EntityType Name="Pramogos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MetaiId" Type="Int32" Nullable="false" />
+    <Property Name="MenuoId" Type="Int32" Nullable="false" />
+    <Property Name="SavaiteId" Type="Int32" Nullable="false" />
+    <Property Name="DienaId" Type="Int32" Nullable="false" />
+    <Property Name="Data" Type="DateTime" Precision="3" />
+    <Property Name="Kinas" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Koncertai" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SportoRenginiai" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Teatras" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Kita" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Dienos" Relationship="Self.fk_DienosPramogos" FromRole="Pramogos" ToRole="Dienos" />
+    <NavigationProperty Name="Menesiai" Relationship="Self.fk_MenesiaiPramogos" FromRole="Pramogos" ToRole="Menesiai" />
+    <NavigationProperty Name="Metai" Relationship="Self.fk_MetaiPramogos" FromRole="Pramogos" ToRole="Metai" />
+    <NavigationProperty Name="Savaites" Relationship="Self.fk_SavaitesPramogos" FromRole="Pramogos" ToRole="Savaites" />
+  </EntityType>
+  <EntityType Name="Savaites">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pavadinimas" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AsmeninePrieziura" Relationship="Self.fk_SavaitesAsmeninePrieziura" FromRole="Savaites" ToRole="AsmeninePrieziura" />
+    <NavigationProperty Name="BustoIslaidos" Relationship="Self.fk_SavaitesBustoIslaidos" FromRole="Savaites" ToRole="BustoIslaidos" />
+    <NavigationProperty Name="Dovanos" Relationship="Self.fk_SavaitesDovanos" FromRole="Savaites" ToRole="Dovanos" />
+    <NavigationProperty Name="Kita" Relationship="Self.fk_SavaitesKita" FromRole="Savaites" ToRole="Kita" />
+    <NavigationProperty Name="Maistas" Relationship="Self.fk_SavaitesMaistas" FromRole="Savaites" ToRole="Maistas" />
+    <NavigationProperty Name="Pramogos" Relationship="Self.fk_SavaitesPramogos" FromRole="Savaites" ToRole="Pramogos" />
+    <NavigationProperty Name="Transportas" Relationship="Self.fk_SavaitesTransportas" FromRole="Savaites" ToRole="Transportas" />
+    <NavigationProperty Name="BustoIslaidos_Savaitine" Relationship="FinansaiModel.fk_SavaitesBustoIslaidos_Savaitine" FromRole="Savaites" ToRole="BustoIslaidos_Savaitine" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Transportas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MetaiId" Type="Int32" Nullable="false" />
+    <Property Name="MenuoId" Type="Int32" Nullable="false" />
+    <Property Name="SavaiteId" Type="Int32" Nullable="false" />
+    <Property Name="DienaId" Type="Int32" Nullable="false" />
+    <Property Name="Data" Type="DateTime" Precision="3" />
+    <Property Name="MašinosPrieziura" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AutobusoTaksiIslaidos" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Draudimas" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Kuras" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Plovimas" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Kita" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Dienos" Relationship="Self.fk_DienosTransportas" FromRole="Transportas" ToRole="Dienos" />
+    <NavigationProperty Name="Menesiai" Relationship="Self.fk_MenesiaiTransportas" FromRole="Transportas" ToRole="Menesiai" />
+    <NavigationProperty Name="Metai" Relationship="Self.fk_MetaiTransportas" FromRole="Transportas" ToRole="Metai" />
+    <NavigationProperty Name="Savaites" Relationship="Self.fk_SavaitesTransportas" FromRole="Transportas" ToRole="Savaites" />
+  </EntityType>
+  <Association Name="fk_DienosAsmeninePrieziura">
+    <End Role="Dienos" Type="Self.Dienos" Multiplicity="1" />
+    <End Role="AsmeninePrieziura" Type="Self.AsmeninePrieziura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dienos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AsmeninePrieziura">
+        <PropertyRef Name="DienaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MenesiaiAsmeninePrieziura">
+    <End Role="Menesiai" Type="Self.Menesiai" Multiplicity="1" />
+    <End Role="AsmeninePrieziura" Type="Self.AsmeninePrieziura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menesiai">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AsmeninePrieziura">
+        <PropertyRef Name="MenuoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MetaiAsmeninePrieziura">
+    <End Role="Metai" Type="Self.Metai" Multiplicity="1" />
+    <End Role="AsmeninePrieziura" Type="Self.AsmeninePrieziura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Metai">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AsmeninePrieziura">
+        <PropertyRef Name="MetaiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_SavaitesAsmeninePrieziura">
+    <End Role="Savaites" Type="Self.Savaites" Multiplicity="1" />
+    <End Role="AsmeninePrieziura" Type="Self.AsmeninePrieziura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Savaites">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AsmeninePrieziura">
+        <PropertyRef Name="SavaiteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DienosBustoIslaidos">
+    <End Role="Dienos" Type="Self.Dienos" Multiplicity="1" />
+    <End Role="BustoIslaidos" Type="Self.BustoIslaidos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dienos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BustoIslaidos">
+        <PropertyRef Name="DienaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MenesiaiBustoIslaidos">
+    <End Role="Menesiai" Type="Self.Menesiai" Multiplicity="1" />
+    <End Role="BustoIslaidos" Type="Self.BustoIslaidos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menesiai">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BustoIslaidos">
+        <PropertyRef Name="MenuoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MetaiBustoIslaidos">
+    <End Role="Metai" Type="Self.Metai" Multiplicity="1" />
+    <End Role="BustoIslaidos" Type="Self.BustoIslaidos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Metai">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BustoIslaidos">
+        <PropertyRef Name="MetaiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_SavaitesBustoIslaidos">
+    <End Role="Savaites" Type="Self.Savaites" Multiplicity="1" />
+    <End Role="BustoIslaidos" Type="Self.BustoIslaidos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Savaites">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BustoIslaidos">
+        <PropertyRef Name="SavaiteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DienosDovanos">
+    <End Role="Dienos" Type="Self.Dienos" Multiplicity="1" />
+    <End Role="Dovanos" Type="Self.Dovanos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dienos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dovanos">
+        <PropertyRef Name="DienaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DienosKita">
+    <End Role="Dienos" Type="Self.Dienos" Multiplicity="1" />
+    <End Role="Kita" Type="Self.Kita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dienos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kita">
+        <PropertyRef Name="DienaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DienosMaistas">
+    <End Role="Dienos" Type="Self.Dienos" Multiplicity="1" />
+    <End Role="Maistas" Type="Self.Maistas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dienos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Maistas">
+        <PropertyRef Name="DienaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DienosPramogos">
+    <End Role="Dienos" Type="Self.Dienos" Multiplicity="1" />
+    <End Role="Pramogos" Type="Self.Pramogos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dienos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pramogos">
+        <PropertyRef Name="DienaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DienosTransportas">
+    <End Role="Dienos" Type="Self.Dienos" Multiplicity="1" />
+    <End Role="Transportas" Type="Self.Transportas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dienos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transportas">
+        <PropertyRef Name="DienaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MenesiaiDovanos">
+    <End Role="Menesiai" Type="Self.Menesiai" Multiplicity="1" />
+    <End Role="Dovanos" Type="Self.Dovanos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menesiai">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dovanos">
+        <PropertyRef Name="MenuoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MetaiDovanos">
+    <End Role="Metai" Type="Self.Metai" Multiplicity="1" />
+    <End Role="Dovanos" Type="Self.Dovanos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Metai">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dovanos">
+        <PropertyRef Name="MetaiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_SavaitesDovanos">
+    <End Role="Savaites" Type="Self.Savaites" Multiplicity="1" />
+    <End Role="Dovanos" Type="Self.Dovanos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Savaites">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dovanos">
+        <PropertyRef Name="SavaiteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MenesiaiKita">
+    <End Role="Menesiai" Type="Self.Menesiai" Multiplicity="1" />
+    <End Role="Kita" Type="Self.Kita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menesiai">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kita">
+        <PropertyRef Name="MenuoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MetaiKita">
+    <End Role="Metai" Type="Self.Metai" Multiplicity="1" />
+    <End Role="Kita" Type="Self.Kita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Metai">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kita">
+        <PropertyRef Name="MetaiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_SavaitesKita">
+    <End Role="Savaites" Type="Self.Savaites" Multiplicity="1" />
+    <End Role="Kita" Type="Self.Kita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Savaites">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kita">
+        <PropertyRef Name="SavaiteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MenesiaiMaistas">
+    <End Role="Menesiai" Type="Self.Menesiai" Multiplicity="1" />
+    <End Role="Maistas" Type="Self.Maistas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menesiai">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Maistas">
+        <PropertyRef Name="MenuoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MetaiMaistas">
+    <End Role="Metai" Type="Self.Metai" Multiplicity="1" />
+    <End Role="Maistas" Type="Self.Maistas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Metai">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Maistas">
+        <PropertyRef Name="MetaiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_SavaitesMaistas">
+    <End Role="Savaites" Type="Self.Savaites" Multiplicity="1" />
+    <End Role="Maistas" Type="Self.Maistas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Savaites">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Maistas">
+        <PropertyRef Name="SavaiteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MenesiaiPramogos">
+    <End Role="Menesiai" Type="Self.Menesiai" Multiplicity="1" />
+    <End Role="Pramogos" Type="Self.Pramogos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menesiai">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pramogos">
+        <PropertyRef Name="MenuoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MenesiaiTransportas">
+    <End Role="Menesiai" Type="Self.Menesiai" Multiplicity="1" />
+    <End Role="Transportas" Type="Self.Transportas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menesiai">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transportas">
+        <PropertyRef Name="MenuoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MetaiPramogos">
+    <End Role="Metai" Type="Self.Metai" Multiplicity="1" />
+    <End Role="Pramogos" Type="Self.Pramogos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Metai">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pramogos">
+        <PropertyRef Name="MetaiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MetaiTransportas">
+    <End Role="Metai" Type="Self.Metai" Multiplicity="1" />
+    <End Role="Transportas" Type="Self.Transportas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Metai">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transportas">
+        <PropertyRef Name="MetaiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_SavaitesPramogos">
+    <End Role="Savaites" Type="Self.Savaites" Multiplicity="1" />
+    <End Role="Pramogos" Type="Self.Pramogos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Savaites">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pramogos">
+        <PropertyRef Name="SavaiteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_SavaitesTransportas">
+    <End Role="Savaites" Type="Self.Savaites" Multiplicity="1" />
+    <End Role="Transportas" Type="Self.Transportas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Savaites">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transportas">
+        <PropertyRef Name="SavaiteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FinansaiEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AsmeninePrieziura" EntityType="Self.AsmeninePrieziura" />
+    <EntitySet Name="BustoIslaidos" EntityType="Self.BustoIslaidos" />
+    <EntitySet Name="Dienos" EntityType="Self.Dienos" />
+    <EntitySet Name="Dovanos" EntityType="Self.Dovanos" />
+    <EntitySet Name="Kita" EntityType="Self.Kita" />
+    <EntitySet Name="Maistas" EntityType="Self.Maistas" />
+    <EntitySet Name="Menesiai" EntityType="Self.Menesiai" />
+    <EntitySet Name="Metai" EntityType="Self.Metai" />
+    <EntitySet Name="Pramogos" EntityType="Self.Pramogos" />
+    <EntitySet Name="Savaites" EntityType="Self.Savaites" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Transportas" EntityType="Self.Transportas" />
+    <AssociationSet Name="fk_DienosAsmeninePrieziura" Association="Self.fk_DienosAsmeninePrieziura">
+      <End Role="Dienos" EntitySet="Dienos" />
+      <End Role="AsmeninePrieziura" EntitySet="AsmeninePrieziura" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MenesiaiAsmeninePrieziura" Association="Self.fk_MenesiaiAsmeninePrieziura">
+      <End Role="Menesiai" EntitySet="Menesiai" />
+      <End Role="AsmeninePrieziura" EntitySet="AsmeninePrieziura" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MetaiAsmeninePrieziura" Association="Self.fk_MetaiAsmeninePrieziura">
+      <End Role="Metai" EntitySet="Metai" />
+      <End Role="AsmeninePrieziura" EntitySet="AsmeninePrieziura" />
+    </AssociationSet>
+    <AssociationSet Name="fk_SavaitesAsmeninePrieziura" Association="Self.fk_SavaitesAsmeninePrieziura">
+      <End Role="Savaites" EntitySet="Savaites" />
+      <End Role="AsmeninePrieziura" EntitySet="AsmeninePrieziura" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DienosBustoIslaidos" Association="Self.fk_DienosBustoIslaidos">
+      <End Role="Dienos" EntitySet="Dienos" />
+      <End Role="BustoIslaidos" EntitySet="BustoIslaidos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MenesiaiBustoIslaidos" Association="Self.fk_MenesiaiBustoIslaidos">
+      <End Role="Menesiai" EntitySet="Menesiai" />
+      <End Role="BustoIslaidos" EntitySet="BustoIslaidos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MetaiBustoIslaidos" Association="Self.fk_MetaiBustoIslaidos">
+      <End Role="Metai" EntitySet="Metai" />
+      <End Role="BustoIslaidos" EntitySet="BustoIslaidos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_SavaitesBustoIslaidos" Association="Self.fk_SavaitesBustoIslaidos">
+      <End Role="Savaites" EntitySet="Savaites" />
+      <End Role="BustoIslaidos" EntitySet="BustoIslaidos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DienosDovanos" Association="Self.fk_DienosDovanos">
+      <End Role="Dienos" EntitySet="Dienos" />
+      <End Role="Dovanos" EntitySet="Dovanos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DienosKita" Association="Self.fk_DienosKita">
+      <End Role="Dienos" EntitySet="Dienos" />
+      <End Role="Kita" EntitySet="Kita" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DienosMaistas" Association="Self.fk_DienosMaistas">
+      <End Role="Dienos" EntitySet="Dienos" />
+      <End Role="Maistas" EntitySet="Maistas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DienosPramogos" Association="Self.fk_DienosPramogos">
+      <End Role="Dienos" EntitySet="Dienos" />
+      <End Role="Pramogos" EntitySet="Pramogos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DienosTransportas" Association="Self.fk_DienosTransportas">
+      <End Role="Dienos" EntitySet="Dienos" />
+      <End Role="Transportas" EntitySet="Transportas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MenesiaiDovanos" Association="Self.fk_MenesiaiDovanos">
+      <End Role="Menesiai" EntitySet="Menesiai" />
+      <End Role="Dovanos" EntitySet="Dovanos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MetaiDovanos" Association="Self.fk_MetaiDovanos">
+      <End Role="Metai" EntitySet="Metai" />
+      <End Role="Dovanos" EntitySet="Dovanos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_SavaitesDovanos" Association="Self.fk_SavaitesDovanos">
+      <End Role="Savaites" EntitySet="Savaites" />
+      <End Role="Dovanos" EntitySet="Dovanos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MenesiaiKita" Association="Self.fk_MenesiaiKita">
+      <End Role="Menesiai" EntitySet="Menesiai" />
+      <End Role="Kita" EntitySet="Kita" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MetaiKita" Association="Self.fk_MetaiKita">
+      <End Role="Metai" EntitySet="Metai" />
+      <End Role="Kita" EntitySet="Kita" />
+    </AssociationSet>
+    <AssociationSet Name="fk_SavaitesKita" Association="Self.fk_SavaitesKita">
+      <End Role="Savaites" EntitySet="Savaites" />
+      <End Role="Kita" EntitySet="Kita" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MenesiaiMaistas" Association="Self.fk_MenesiaiMaistas">
+      <End Role="Menesiai" EntitySet="Menesiai" />
+      <End Role="Maistas" EntitySet="Maistas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MetaiMaistas" Association="Self.fk_MetaiMaistas">
+      <End Role="Metai" EntitySet="Metai" />
+      <End Role="Maistas" EntitySet="Maistas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_SavaitesMaistas" Association="Self.fk_SavaitesMaistas">
+      <End Role="Savaites" EntitySet="Savaites" />
+      <End Role="Maistas" EntitySet="Maistas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MenesiaiPramogos" Association="Self.fk_MenesiaiPramogos">
+      <End Role="Menesiai" EntitySet="Menesiai" />
+      <End Role="Pramogos" EntitySet="Pramogos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MenesiaiTransportas" Association="Self.fk_MenesiaiTransportas">
+      <End Role="Menesiai" EntitySet="Menesiai" />
+      <End Role="Transportas" EntitySet="Transportas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MetaiPramogos" Association="Self.fk_MetaiPramogos">
+      <End Role="Metai" EntitySet="Metai" />
+      <End Role="Pramogos" EntitySet="Pramogos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MetaiTransportas" Association="Self.fk_MetaiTransportas">
+      <End Role="Metai" EntitySet="Metai" />
+      <End Role="Transportas" EntitySet="Transportas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_SavaitesPramogos" Association="Self.fk_SavaitesPramogos">
+      <End Role="Savaites" EntitySet="Savaites" />
+      <End Role="Pramogos" EntitySet="Pramogos" />
+    </AssociationSet>
+    <AssociationSet Name="fk_SavaitesTransportas" Association="Self.fk_SavaitesTransportas">
+      <End Role="Savaites" EntitySet="Savaites" />
+      <End Role="Transportas" EntitySet="Transportas" />
+    </AssociationSet>
+    <EntitySet Name="Santaupos" EntityType="FinansaiModel.Santaupos" />
+    <EntitySet Name="BustoIslaidos_Savaitine" EntityType="FinansaiModel.BustoIslaidos_Savaitine" />
+    <AssociationSet Name="fk_DienosBustoIslaidos_Savaitine" Association="FinansaiModel.fk_DienosBustoIslaidos_Savaitine">
+      <End Role="Dienos" EntitySet="Dienos" />
+      <End Role="BustoIslaidos_Savaitine" EntitySet="BustoIslaidos_Savaitine" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MenesiaiBustoIslaidos_Savaitine" Association="FinansaiModel.fk_MenesiaiBustoIslaidos_Savaitine">
+      <End Role="Menesiai" EntitySet="Menesiai" />
+      <End Role="BustoIslaidos_Savaitine" EntitySet="BustoIslaidos_Savaitine" />
+    </AssociationSet>
+    <AssociationSet Name="fk_MetaiBustoIslaidos_Savaitine" Association="FinansaiModel.fk_MetaiBustoIslaidos_Savaitine">
+      <End Role="Metai" EntitySet="Metai" />
+      <End Role="BustoIslaidos_Savaitine" EntitySet="BustoIslaidos_Savaitine" />
+    </AssociationSet>
+    <AssociationSet Name="fk_SavaitesBustoIslaidos_Savaitine" Association="FinansaiModel.fk_SavaitesBustoIslaidos_Savaitine">
+      <End Role="Savaites" EntitySet="Savaites" />
+      <End Role="BustoIslaidos_Savaitine" EntitySet="BustoIslaidos_Savaitine" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Santaupos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Grynais" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="MKorteleDnB" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="JKorteleDanske" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="JKortelėSwedBank" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="JKortelėDnB" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Automobiliui" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Kelionei" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="ForceMajor" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Sveikata" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Rubai" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="BustoIslaidos_Savaitine">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MetaiId" Type="Int32" Nullable="false" />
+    <Property Name="MenuoId" Type="Int32" Nullable="false" />
+    <Property Name="SavaiteId" Type="Int32" Nullable="false" />
+    <Property Name="DienaId" Type="Int32" Nullable="false" />
+    <Property Name="Data" Type="DateTime" Precision="3" />
+    <Property Name="Paskola" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="MalgozatosTelefonas" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="JuliausTelefonas" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Elektra" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Vanduo" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Šildymas" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="TvIrInterntetas" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="BendriMokesciai" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Kita" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <NavigationProperty Name="Dienos" Relationship="FinansaiModel.fk_DienosBustoIslaidos_Savaitine" FromRole="BustoIslaidos_Savaitine" ToRole="Dienos" />
+    <NavigationProperty Name="Menesiai" Relationship="FinansaiModel.fk_MenesiaiBustoIslaidos_Savaitine" FromRole="BustoIslaidos_Savaitine" ToRole="Menesiai" />
+    <NavigationProperty Name="Metai" Relationship="FinansaiModel.fk_MetaiBustoIslaidos_Savaitine" FromRole="BustoIslaidos_Savaitine" ToRole="Metai" />
+    <NavigationProperty Name="Savaites" Relationship="FinansaiModel.fk_SavaitesBustoIslaidos_Savaitine" FromRole="BustoIslaidos_Savaitine" ToRole="Savaites" />
+  </EntityType>
+  <Association Name="fk_DienosBustoIslaidos_Savaitine">
+    <End Type="FinansaiModel.Dienos" Role="Dienos" Multiplicity="1" />
+    <End Type="FinansaiModel.BustoIslaidos_Savaitine" Role="BustoIslaidos_Savaitine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dienos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BustoIslaidos_Savaitine">
+        <PropertyRef Name="DienaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MenesiaiBustoIslaidos_Savaitine">
+    <End Type="FinansaiModel.Menesiai" Role="Menesiai" Multiplicity="1" />
+    <End Type="FinansaiModel.BustoIslaidos_Savaitine" Role="BustoIslaidos_Savaitine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menesiai">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BustoIslaidos_Savaitine">
+        <PropertyRef Name="MenuoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_MetaiBustoIslaidos_Savaitine">
+    <End Type="FinansaiModel.Metai" Role="Metai" Multiplicity="1" />
+    <End Type="FinansaiModel.BustoIslaidos_Savaitine" Role="BustoIslaidos_Savaitine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Metai">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BustoIslaidos_Savaitine">
+        <PropertyRef Name="MetaiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_SavaitesBustoIslaidos_Savaitine">
+    <End Type="FinansaiModel.Savaites" Role="Savaites" Multiplicity="1" />
+    <End Type="FinansaiModel.BustoIslaidos_Savaitine" Role="BustoIslaidos_Savaitine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Savaites">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BustoIslaidos_Savaitine">
+        <PropertyRef Name="SavaiteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

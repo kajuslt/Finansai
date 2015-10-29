@@ -1,0 +1,23 @@
+﻿@using System.Linq
+@using Kendo.Mvc.UI
+@model Finanasai.Models.KlasifikatoriaiList
+@{
+    ViewBag.Title = "Klasifikatoriai";
+}
+<h2>Klasifikatoriai</h2>
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend></legend>
+        @(Html.Kendo().DropDownListFor(m => m.Id)
+                        .DataTextField("Text")
+                        .DataValueField("Value")
+                        .HtmlAttributes(new { @Style = "width:250px"})
+                        .BindTo(Finanasai.Models.KlasifikatoriaiList.GetKlasifikatoriaiSelectList().OrderBy(model => model.Text))
+        )
+
+        <input type="submit" class="k-button k-button-icontext" value="Pasirinkti" />
+    </fieldset>
+}
+@{Html.RenderAction("Index", (string)ViewBag.ControllerName);}
+

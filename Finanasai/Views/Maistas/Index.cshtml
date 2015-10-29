@@ -1,0 +1,40 @@
+﻿@using Finanasai.ViewModel
+@using Kendo.Mvc.UI
+@model IEnumerable<Finanasai.ViewModel.MaistasViewModel>
+
+@{
+    ViewBag.Title = "Maistas";
+}
+
+<h2>Maistas</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div id="maistasGridas" class="k-content">
+    <div class="gridtitle">Maistas</div>
+    @(Html.Kendo().Grid<MaistasViewModel>()
+          .Name("maistasGrid")
+          .Columns(columns =>
+          {
+              columns.Bound(f => f.Metai);
+              columns.Bound(f => f.Menesiai).Width(80);
+              columns.Bound(f => f.Savaites).Width(90);
+              columns.Bound(f => f.Dienos);
+              columns.Bound(f => f.Data).Width(100);
+              columns.Bound(f => f.Pirkiniai);
+              columns.Bound(f => f.RestoranaiKavinesUzkandines);
+              columns.Bound(f => f.MaistasDarbe);
+              columns.Bound(f => f.Kita);
+          })
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Read(read => read
+                          .Action("GetMaistas", "Maistas"))
+              .PageSize(8)
+
+          )
+
+          .Pageable()
+          .Sortable())
+</div>

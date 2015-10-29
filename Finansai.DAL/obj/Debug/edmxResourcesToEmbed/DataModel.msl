@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FinansaiModelStoreContainer" CdmEntityContainer="FinansaiEntities">
+    <EntitySetMapping Name="AsmeninePrieziura">
+      <EntityTypeMapping TypeName="FinansaiModel.AsmeninePrieziura">
+        <MappingFragment StoreEntitySet="AsmeninePrieziura">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MetaiId" ColumnName="MetaiId" />
+          <ScalarProperty Name="MenuoId" ColumnName="MenuoId" />
+          <ScalarProperty Name="SavaiteId" ColumnName="SavaiteId" />
+          <ScalarProperty Name="DienaId" ColumnName="DienaId" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Medicina" ColumnName="Medicina" />
+          <ScalarProperty Name="PlaukaiNagai" ColumnName="PlaukaiNagai" />
+          <ScalarProperty Name="Rubai" ColumnName="Rubai" />
+          <ScalarProperty Name="RubuValymas" ColumnName="RubuValymas" />
+          <ScalarProperty Name="SveikatingumoKlubas" ColumnName="SveikatingumoKlubas" />
+          <ScalarProperty Name="Bureliai" ColumnName="Bureliai" />
+          <ScalarProperty Name="HigienoPrekes" ColumnName="HigienoPrekes" />
+          <ScalarProperty Name="Kita" ColumnName="Kita" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BustoIslaidos">
+      <EntityTypeMapping TypeName="FinansaiModel.BustoIslaidos">
+        <MappingFragment StoreEntitySet="BustoIslaidos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MetaiId" ColumnName="MetaiId" />
+          <ScalarProperty Name="MenuoId" ColumnName="MenuoId" />
+          <ScalarProperty Name="SavaiteId" ColumnName="SavaiteId" />
+          <ScalarProperty Name="DienaId" ColumnName="DienaId" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Paskola" ColumnName="Paskola" />
+          <ScalarProperty Name="MalgozatosTelefonas" ColumnName="MalgozatosTelefonas" />
+          <ScalarProperty Name="JuliausTelefonas" ColumnName="JuliausTelefonas" />
+          <ScalarProperty Name="Elektra" ColumnName="Elektra" />
+          <ScalarProperty Name="Vanduo" ColumnName="Vanduo" />
+          <ScalarProperty Name="Šildymas" ColumnName="Šildymas" />
+          <ScalarProperty Name="TvIrInterntetas" ColumnName="TvIrInterntetas" />
+          <ScalarProperty Name="BendriMokesciai" ColumnName="BendriMokesciai" />
+          <ScalarProperty Name="Kita" ColumnName="Kita" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dienos">
+      <EntityTypeMapping TypeName="FinansaiModel.Dienos">
+        <MappingFragment StoreEntitySet="Dienos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Pavadinimas" ColumnName="Pavadinimas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dovanos">
+      <EntityTypeMapping TypeName="FinansaiModel.Dovanos">
+        <MappingFragment StoreEntitySet="Dovanos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MetaiId" ColumnName="MetaiId" />
+          <ScalarProperty Name="MenuoId" ColumnName="MenuoId" />
+          <ScalarProperty Name="SavaiteId" ColumnName="SavaiteId" />
+          <ScalarProperty Name="DienaId" ColumnName="DienaId" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Gimtadieniai" ColumnName="Gimtadieniai" />
+          <ScalarProperty Name="Sventės" ColumnName="Sventės" />
+          <ScalarProperty Name="Kita" ColumnName="Kita" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kita">
+      <EntityTypeMapping TypeName="FinansaiModel.Kita">
+        <MappingFragment StoreEntitySet="Kita">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MetaiId" ColumnName="MetaiId" />
+          <ScalarProperty Name="MenuoId" ColumnName="MenuoId" />
+          <ScalarProperty Name="SavaiteId" ColumnName="SavaiteId" />
+          <ScalarProperty Name="DienaId" ColumnName="DienaId" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="NenumatytiAtvejai" ColumnName="NenumatytiAtvejai" />
+          <ScalarProperty Name="BuitieneTechnika" ColumnName="BuitieneTechnika" />
+          <ScalarProperty Name="Cigaretes" ColumnName="Cigaretes" />
+          <ScalarProperty Name="Kita1" ColumnName="Kita" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maistas">
+      <EntityTypeMapping TypeName="FinansaiModel.Maistas">
+        <MappingFragment StoreEntitySet="Maistas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MetaiId" ColumnName="MetaiId" />
+          <ScalarProperty Name="MenuoId" ColumnName="MenuoId" />
+          <ScalarProperty Name="SavaiteId" ColumnName="SavaiteId" />
+          <ScalarProperty Name="DienaId" ColumnName="DienaId" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Pirkiniai" ColumnName="Pirkiniai" />
+          <ScalarProperty Name="RestoranaiKavinesUzkandines" ColumnName="RestoranaiKavinesUzkandines" />
+          <ScalarProperty Name="MaistasDarbe" ColumnName="MaistasDarbe" />
+          <ScalarProperty Name="Kita" ColumnName="Kita" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menesiai">
+      <EntityTypeMapping TypeName="FinansaiModel.Menesiai">
+        <MappingFragment StoreEntitySet="Menesiai">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Pavadinimas" ColumnName="Pavadinimas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Metai">
+      <EntityTypeMapping TypeName="FinansaiModel.Metai">
+        <MappingFragment StoreEntitySet="Metai">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Pavadinimas" ColumnName="Pavadinimas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pramogos">
+      <EntityTypeMapping TypeName="FinansaiModel.Pramogos">
+        <MappingFragment StoreEntitySet="Pramogos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MetaiId" ColumnName="MetaiId" />
+          <ScalarProperty Name="MenuoId" ColumnName="MenuoId" />
+          <ScalarProperty Name="SavaiteId" ColumnName="SavaiteId" />
+          <ScalarProperty Name="DienaId" ColumnName="DienaId" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Kinas" ColumnName="Kinas" />
+          <ScalarProperty Name="Koncertai" ColumnName="Koncertai" />
+          <ScalarProperty Name="SportoRenginiai" ColumnName="SportoRenginiai" />
+          <ScalarProperty Name="Teatras" ColumnName="Teatras" />
+          <ScalarProperty Name="Kita" ColumnName="Kita" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Savaites">
+      <EntityTypeMapping TypeName="FinansaiModel.Savaites">
+        <MappingFragment StoreEntitySet="Savaites">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Pavadinimas" ColumnName="Pavadinimas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="FinansaiModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transportas">
+      <EntityTypeMapping TypeName="FinansaiModel.Transportas">
+        <MappingFragment StoreEntitySet="Transportas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MetaiId" ColumnName="MetaiId" />
+          <ScalarProperty Name="MenuoId" ColumnName="MenuoId" />
+          <ScalarProperty Name="SavaiteId" ColumnName="SavaiteId" />
+          <ScalarProperty Name="DienaId" ColumnName="DienaId" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="MašinosPrieziura" ColumnName="MašinosPrieziura" />
+          <ScalarProperty Name="AutobusoTaksiIslaidos" ColumnName="AutobusoTaksiIslaidos" />
+          <ScalarProperty Name="Draudimas" ColumnName="Draudimas" />
+          <ScalarProperty Name="Kuras" ColumnName="Kuras" />
+          <ScalarProperty Name="Plovimas" ColumnName="Plovimas" />
+          <ScalarProperty Name="Kita" ColumnName="Kita" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Santaupos">
+      <EntityTypeMapping TypeName="FinansaiModel.Santaupos">
+        <MappingFragment StoreEntitySet="Santaupos">
+          <ScalarProperty Name="Rubai" ColumnName="Rubai" />
+          <ScalarProperty Name="Sveikata" ColumnName="Sveikata" />
+          <ScalarProperty Name="ForceMajor" ColumnName="ForceMajor" />
+          <ScalarProperty Name="Kelionei" ColumnName="Kelionei" />
+          <ScalarProperty Name="Automobiliui" ColumnName="Automobiliui" />
+          <ScalarProperty Name="JKortelėDnB" ColumnName="JKortelėDnB" />
+          <ScalarProperty Name="JKortelėSwedBank" ColumnName="JKortelėSwedBank" />
+          <ScalarProperty Name="JKorteleDanske" ColumnName="JKorteleDanske" />
+          <ScalarProperty Name="MKorteleDnB" ColumnName="MKorteleDnB" />
+          <ScalarProperty Name="Grynais" ColumnName="Grynais" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BustoIslaidos_Savaitine">
+      <EntityTypeMapping TypeName="FinansaiModel.BustoIslaidos_Savaitine">
+        <MappingFragment StoreEntitySet="BustoIslaidos_Savaitine">
+          <ScalarProperty Name="Kita" ColumnName="Kita" />
+          <ScalarProperty Name="BendriMokesciai" ColumnName="BendriMokesciai" />
+          <ScalarProperty Name="TvIrInterntetas" ColumnName="TvIrInterntetas" />
+          <ScalarProperty Name="Šildymas" ColumnName="Šildymas" />
+          <ScalarProperty Name="Vanduo" ColumnName="Vanduo" />
+          <ScalarProperty Name="Elektra" ColumnName="Elektra" />
+          <ScalarProperty Name="JuliausTelefonas" ColumnName="JuliausTelefonas" />
+          <ScalarProperty Name="MalgozatosTelefonas" ColumnName="MalgozatosTelefonas" />
+          <ScalarProperty Name="Paskola" ColumnName="Paskola" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="DienaId" ColumnName="DienaId" />
+          <ScalarProperty Name="SavaiteId" ColumnName="SavaiteId" />
+          <ScalarProperty Name="MenuoId" ColumnName="MenuoId" />
+          <ScalarProperty Name="MetaiId" ColumnName="MetaiId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
