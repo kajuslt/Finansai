@@ -112,6 +112,11 @@ namespace Finanasai.Controllers
             return RedirectToAction("Index");
         }
 
+        public JsonResult GetDienosJsonResult()
+        {
+            return Json(_db.Dienos.Select(c => new { DienosId = c.Id, DienosPavadinimas = c.Pavadinimas }), JsonRequestBehavior.AllowGet);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

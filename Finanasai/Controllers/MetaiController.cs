@@ -132,5 +132,10 @@ namespace Finanasai.Controllers
             result.Data = Mapper.Map<IEnumerable<MetaiViewModel>>(result.Data);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult GetMetaiJsonResult()
+        {
+            return Json(_db.Metai.Select(c => new { MetaiId = c.Id, MetaiPavadinimas = c.Pavadinimas }), JsonRequestBehavior.AllowGet);
+        }
     }
 }

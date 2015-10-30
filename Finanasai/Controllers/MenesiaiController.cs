@@ -7,7 +7,7 @@ using Finansai.DAL;
 
 namespace Finanasai.Controllers
 {
-    public class MenesiaisController : BaseController
+    public class MenesiaiController : BaseController
     {
 
         // GET: Menesiais
@@ -109,6 +109,11 @@ namespace Finanasai.Controllers
             _db.Menesiai.Remove(menesiai);
             _db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public JsonResult GetMenesiaiJsonResult()
+        {
+            return Json(_db.Menesiai.Select(c => new { MenesiaiId = c.Id, MenesiaiPavadinimas = c.Pavadinimas }), JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

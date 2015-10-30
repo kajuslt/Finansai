@@ -111,6 +111,11 @@ namespace Finanasai.Controllers
             return RedirectToAction("Index");
         }
 
+        public JsonResult GetSavaitesJsonResult()
+        {
+            return Json(_db.Savaites.Select(c => new { SavaitesId = c.Id, SavaitesPavadinimas = c.Pavadinimas }), JsonRequestBehavior.AllowGet);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

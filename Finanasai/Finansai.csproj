@@ -176,7 +176,7 @@
     <Compile Include="Controllers\KlasifikatoriaiController.cs" />
     <Compile Include="Controllers\MaistasController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\MenesiaisController.cs" />
+    <Compile Include="Controllers\MenesiaiController.cs" />
     <Compile Include="Controllers\MetaiController.cs" />
     <Compile Include="Controllers\PramogosController.cs" />
     <Compile Include="Controllers\SantauposController.cs" />
@@ -997,11 +997,11 @@
     <Content Include="Views\Maistas\Details.cshtml" />
     <Content Include="Views\Maistas\Edit.cshtml" />
     <Content Include="Views\Maistas\Index.cshtml" />
-    <Content Include="Views\Menesiais\Create.cshtml" />
-    <Content Include="Views\Menesiais\Delete.cshtml" />
-    <Content Include="Views\Menesiais\Details.cshtml" />
-    <Content Include="Views\Menesiais\Edit.cshtml" />
-    <Content Include="Views\Menesiais\Index.cshtml" />
+    <Content Include="Views\Menesiai\Create.cshtml" />
+    <Content Include="Views\Menesiai\Delete.cshtml" />
+    <Content Include="Views\Menesiai\Details.cshtml" />
+    <Content Include="Views\Menesiai\Edit.cshtml" />
+    <Content Include="Views\Menesiai\Index.cshtml" />
     <Content Include="Views\Metai\Create.cshtml" />
     <Content Include="Views\Metai\Delete.cshtml" />
     <Content Include="Views\Metai\Details.cshtml" />
